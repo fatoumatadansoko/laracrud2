@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 
-class CrudControllerr extends Controller
+class CrudController extends Controller
 {
     public function liste_article()
     {
