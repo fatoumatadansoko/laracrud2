@@ -10,13 +10,15 @@ class CrudController extends Controller
     public function liste_article()
     {
         $articles = Article::all();
-        return view('article.liste', compact(('articles')));
+        return view('articles.liste', compact('articles'));
     }
+
     public function ajouter_article()
     {
-        return view('article.ajouter');
+        return view('articles.ajouter');
     }
-    public function ajouter_article_traitement(request $request)
+
+    public function ajouter_article_traitement(Request $request)
     {
         $request->validate([
             'nom' => 'required',
@@ -24,8 +26,8 @@ class CrudController extends Controller
             'date_creation' => 'required',
             'a_la_une' => 'required',
             'image' => 'required',
-
         ]);
+
         $article = new Article();
         $article->nom = $request->nom;
         $article->description = $request->description;
@@ -34,42 +36,47 @@ class CrudController extends Controller
         $article->image = $request->image;
         $article->save();
 
-        return redirect('/ajouter')->with('status', 'L\'article a bien était ajouté avec succes.');
+        return redirect()->route('liste_article')->with('status', 'L\'article a bien été ajouté avec succès.');
     }
+
     public function voir_article($id)
     {
         $article = Article::findOrFail($id);
-        return view('article.voir', compact('article'));
+        return view('articles.voir', compact('article'));
     }
+
     public function update_article($id)
     {
         $articles = Article::find($id);
-        return view('article.update', compact('articles'));
+        return view('articles.update', compact('articles'));
     }
+
     public function update_article_traitement(Request $request)
     {
-
         $request->validate([
             'nom' => 'required',
             'description' => 'required',
             'date_creation' => 'required',
             'a_la_une' => 'required',
             'image' => 'required',
-
         ]);
-        $article =  Article::find($request->id);
+
+        $article = Article::find($request->id);
         $article->nom = $request->nom;
         $article->description = $request->description;
         $article->date_creation = $request->date_creation;
         $article->a_la_une = $request->a_la_une;
         $article->image = $request->image;
         $article->update();
-        return redirect('/article')->with('status', 'L\'article a bien était modifié avec succes.');
+
+        return redirect()->route('liste_article')->with('status', 'L\'article a bien été modifié avec succès.');
     }
-    public function delete_article($id){
-        $article= Article::find($id);
+
+    public function delete_article($id)
+    {
+        $article = Article::find($id);
         $article->delete();
-        return redirect('/article')->with('status', 'L\'article a bien était supprimé avec succes.');
-    
+
+        return redirect()->route('liste_article')->with('status', 'L\'article a bien été supprimé avec succès.');
     }
 }

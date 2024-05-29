@@ -12,7 +12,7 @@ class CreateCommentairesTable extends Migration
             $table->id();
             $table->text('contenu');
             $table->string('nom_complet_auteur');
-            $table->timestamp('date_heure_creation')->useCurrent();
+            $table->timestamp('date_heure_creation',50)->useCurrent();
             $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             $table->timestamps();
         });

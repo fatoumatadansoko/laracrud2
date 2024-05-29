@@ -10,11 +10,11 @@
             public function voir_article()
             {
                 $commentaires = Commentaire::all();
-                return view('commentaire.voir', compact(('commentaires')));
+                return view('commentaires.voir', compact(('commentaires')));
             }
             public function ajouter_commentaire()
             {
-                return view('commentaire.ajouter');
+                return view('commentaires.ajouter');
             }
             public function ajouter_commentaire_traitement(request $request)
             {
@@ -25,19 +25,22 @@
                 $commentaire = new Commentaire();
                 $commentaire->contenu = $request->contenu;
                 $commentaire->nom_complet_auteur = $request->nom_complet_auteur;
+                $commentaire->date_heure_creation = $request->date_heure_creation;
+                $commentaire->article_id = $request->article_id;
+
                 $commentaire->save();
         
-                return redirect('/ajouter')->with('status', 'L\'article a bien était ajouté avec succes.');
+                return redirect('/ajouter')->with('status', 'Le commentaire  a bien était ajouté avec succes.');
             }
             public function voir_commentaire($id)
             {
                 $article = Commentaire::findOrFail($id);
-                return view('commentaire.voir', compact('commentaire'));
+                return view('commentaires.voir', compact('commentaire'));
             }
-            public function update_commentaire($id)
+            public function update_commentaire($commentaire_id)
             {
-                $commentaires = Commentaire::find($id);
-                return view('update.update', compact('commentaires'));
+                $commentaires = Commentaire::find($commentaire_id);
+                return view('commentaires.update', compact('commentaires'));
             }
             public function update_commentaire_traitement(Request $request)
             {
@@ -54,7 +57,7 @@
         $commentaire = Commentaire::findOrFail($id);
         $commentaire->delete();
 
-        return redirect()->route('commentaires.index')->with('status', 'Commentaire supprimé avec succès!');
+        return redirect()->route('commentaires.supprimer')->with('status', 'Commentaire supprimé avec succès!');
     }
         }
         

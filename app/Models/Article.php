@@ -16,6 +16,9 @@ class Article extends Model
         'a_la_une',
         'image',
     ];
+    public function commentaires(){
+        return $this->hasMany(Commentaire::class,'article_id');
+    }
 
     protected $casts = [
         'a_la_une' => 'boolean', // Convertit automatiquement la valeur en booléen

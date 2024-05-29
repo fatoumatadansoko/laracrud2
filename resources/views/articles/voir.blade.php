@@ -20,8 +20,30 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('commentaires.ajouter', ['article_id' => $article->id]) }}" class="btn btn-primary">Ajouter un Commentaire</a>
+       <!-- resources/views/articles/voir.blade.php -->
 
+<div class="container">
+    
+    <hr>
+    <h2>Commentaires</h2>
+    @if ($article->commentaires)
+    @foreach ($article->commentaires as $commentaire)
+        <!-- Boucle à travers les commentaires -->
+        <div class="comment">
+            <p>{{ $commentaire->contenu }}</p>
+            <p><strong>{{ $commentaire->nom_complet_auteur }}</strong> - {{ $commentaire->created_at }}</p>
+        </div>
+        <a href="{{ route('update.commentaire', ['commentaire_id' => $commentaire->id]) }}" class="btn btn-primary">Modifier un Commentaire</a> --}}
+
+    @endforeach
+@endif
+
+<a href="{{ route('commentaire.ajouter')}}" class="btn btn-primary">Ajouter un Commentaire</a>
+
+
+
+    <hr>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
