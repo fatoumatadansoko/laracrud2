@@ -25,28 +25,5 @@
 </body>
 </html>
 <!-- resources/views/articles/voir.blade.php -->
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <h1>{{ $article->nom }}</h1>
-    <p>{{ $article->description }}</p>
-    <p>Publié le : {{ $article->date_creation }}</p>
-    <p>A la une : {{ $article->a_la_une ? 'Oui' : 'Non' }}</p>
-    <img src="{{ $article->image }}" alt="Image de l'article">
-
-    <hr>
-    <h2>Commentaires</h2>
-
-    @foreach ($article->commentaires as $commentaire)
-        <div class="comment">
-            <p>{{ $commentaire->contenu }}</p>
-            <p><strong>{{ $commentaire->nom_complet_auteur }}</strong> - {{ $commentaire->created_at }}</p>
-        </div>
-    @endforeach
-
-    <hr>
-    <a href="{{ route('commentaires.create', ['article_id' => $article->id]) }}" class="btn btn-primary">Ajouter un Commentaire</a>
-</div>
-@endsection
 
