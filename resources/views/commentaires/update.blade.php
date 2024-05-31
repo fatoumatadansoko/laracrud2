@@ -9,10 +9,10 @@
 <body>
     <div class="container mt-5">
         <h1>Modifier Commentaire</h1>
-        <form action="/update/commentaire/traitement" method="POST" class="form-group">
+        <form action="/update/commentaire/{{ $commentaires->id }}" method="POST" class="form-group">
             @csrf
             @method("put")
-            <input type="hidden" class="form-control" id="nom_complet_auteur" name="article_id" value="{{ $commentaires->article_id }}" required>
+            {{-- <input type="hidden" class="form-control" id="nom_complet_auteur" name="article_id" value="{{ $commentaires->article_id }}" required> --}}
 
             <div class="mb-3">
                 <label for="nom_complet_auteur" class="form-label">Nom Complet de l'Auteur</label>
@@ -20,11 +20,11 @@
             </div>
             <div class="mb-3">
                 <label for="contenu" class="form-label">Contenu</label>
-                <input type="text"  name="contenu"  value="{{ $commentaires->contenu }}">
-                {{-- <textarea class="form-control" id="contenu" name="contenu" rows="3" required>{{ $commentaires->contenu }}</textarea> --}}
+                {{-- <input type="text"  name="contenu"  value="{{ $commentaires->contenu }}"> --}}
+                <textarea type="text" name="contenu" rows="6" required>{{ $commentaires->contenu }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Modifier</button>
-        </form>
+        </form>class="form-control" id="contenu"
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
