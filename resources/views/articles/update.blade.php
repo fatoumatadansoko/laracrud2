@@ -26,7 +26,7 @@
 </ul>
     
 
-<form action="/update/traitement" method="POST" class="form-group">
+<form action="/update/article/traitement" method="POST" class="form-group">
     @csrf
 <input type="text" name="id" style="display: none;" value="{{$articles->id}}">
     <div class="mb-3">

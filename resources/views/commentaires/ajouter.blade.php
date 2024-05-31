@@ -26,7 +26,7 @@
 </ul>
     
 
-<form action="/ajouter/traitement" method="POST" class="form-group">
+<form action="/ajouter/commentaire/traitement" method="POST" class="form-group">
     @csrf
 
     <div class="mb-3">

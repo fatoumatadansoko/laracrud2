@@ -20,13 +20,6 @@ class CrudController extends Controller
 
     public function ajouter_article_traitement(Request $request)
     {
-        $request->validate([
-            'nom' => 'required',
-            'description' => 'required',
-            'date_creation' => 'required',
-            'a_la_une' => 'required',
-            'image' => 'required',
-        ]);
 
         $article = new Article();
         $article->nom = $request->nom;
@@ -53,15 +46,7 @@ class CrudController extends Controller
 
     public function update_article_traitement(Request $request)
     {
-        $request->validate([
-            'nom' => 'required',
-            'description' => 'required',
-            'date_creation' => 'required',
-            'a_la_une' => 'required',
-            'image' => 'required',
-        ]);
-
-        $article = Article::find($request->id);
+   $article = Article::find($request->id);
         $article->nom = $request->nom;
         $article->description = $request->description;
         $article->date_creation = $request->date_creation;

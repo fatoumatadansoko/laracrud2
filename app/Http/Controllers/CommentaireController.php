@@ -18,10 +18,6 @@
             }
             public function ajouter_commentaire_traitement(request $request)
             {
-                $request->validate([
-                    'contenu' => 'required',
-                    'nom_complet_auteur' => 'required',
-                ]);
                 $commentaire = new Commentaire();
                 $commentaire->contenu = $request->contenu;
                 $commentaire->nom_complet_auteur = $request->nom_complet_auteur;
@@ -45,10 +41,12 @@
             public function update_commentaire_traitement(Request $request)
             {
 
-                $commentaire = Commentaire::find($request->id);
+                $commentaire = new Commentaire;
+                // $commentaire = Commentaire::find($request->id);
+                $commentaire->article_id = $request->article_id;
                 $commentaire->contenu = $request->contenu;
                 $commentaire->nom_complet_auteur = $request->nom_complet_auteur;
-                $commentaire->update();
+                $commentaire->save();
                 return redirect('/article')->with('status', 'L\'article a bien était modifié avec succes.');
             }
             // Supprimer un commentaire

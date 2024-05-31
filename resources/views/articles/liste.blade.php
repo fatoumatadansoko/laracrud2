@@ -9,7 +9,8 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Liste des Articles</h1>
-        <a href="/ajouter" class="btn btn-primary">ajouter un article</a>   
+        <a href="/ajouter/article" class="btn btn-primary">ajouter un article</a>   
+        {{-- <a href="{{route("ajouter_article")}}" class="btn btn-primary">ajouter un article</a>    --}}
 
         <div class="row">
             @foreach($articles as $article)
@@ -23,9 +24,9 @@
                             <p class="card-text"><small class="text-muted">À la une: {{ $article->a_la_une ? 'Oui' : 'Non' }}</small></p>
                             <a href="{{ route('voir_article', $article->id) }}" class="btn btn-primary">Voir plus</a>
                             <div>
-                                <a href="{{ url('/update-article/'.$article->id) }}" class="btn btn-info">Modifier</a>
                                 <a href="{{ url('/delete-article/'.$article->id) }}"class= "btn btn-danger">Supprimer</a>
-                        
+                                <a href="/update-article/{{ $article->id }}" class="btn btn-primary">modifier un article</a>   
+
                             </div>
                         </div>
                     </div>

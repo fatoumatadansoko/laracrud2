@@ -33,12 +33,15 @@
             <p>{{ $commentaire->contenu }}</p>
             <p><strong>{{ $commentaire->nom_complet_auteur }}</strong> - {{ $commentaire->created_at }}</p>
         </div>
-        <a href="{{ route('update.commentaire', ['commentaire_id' => $commentaire->id]) }}" class="btn btn-primary">Modifier un Commentaire</a> --}}
+        <a href="/update-commentaire/{{ $commentaire->id }}" class="btn btn-primary">modifier un commentaire</a>   
+
 
     @endforeach
 @endif
 
 <a href="{{ route('commentaire.ajouter')}}" class="btn btn-primary">Ajouter un Commentaire</a>
+
+ 
 
 
 
